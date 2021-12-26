@@ -14,7 +14,7 @@
     "moment": "^2.29.1",
     "postcss-px2rem": "^0.3.0",
     "register-service-worker": "^1.7.1",
-    "vue": "^3.0.0",
+    "vue": "^3.2.26",
     "vue-router": "^4.0.0-0",
     "vuex": "^4.0.0-0"
   },
@@ -30,7 +30,9 @@
     "eslint": "^6.7.2",
     "eslint-plugin-vue": "^7.0.0",
     "less": "^3.0.4",
-    "less-loader": "^5.0.0"
+    "less-loader": "^5.0.0",
+    "unplugin-auto-import": "^0.5.4",
+    "unplugin-vue-components": "^0.17.11"
   },
   "eslintConfig": {
     "root": true,
@@ -45,14 +47,6 @@
       "parser": "babel-eslint"
     },
     "rules": {}
-  },
-  "postcss": {
-    "plugins": {
-      "autoprefixer": {},
-      "postcss-px2rem": {
-        "remUnit": 37.5
-      }
-    }
   },
   "browserslist": [
     "> 1%",
