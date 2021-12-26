@@ -9,15 +9,17 @@ import 'element-plus/dist/index.css'
 import 'amfe-flexible'
 
 import axios from 'axios'
-import VueAxios from 'vue-axios'
+import './mock'
 
 
 const app = createApp(App)
 
+app.config.globalProperties.$http = axios;
+
 app.use(store);
 app.use(router);
 app.use(ElementPlus);
-app.use(VueAxios, axios);
+
 
 
 
