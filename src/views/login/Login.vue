@@ -4,13 +4,16 @@
         :model="ruleForm"
         status-icon
         :rules="rules"
-        label-width="80px"
+        label-width="0"
         class="demo-ruleForm">
-            <el-form-item label="账号" prop="username">
-                <el-input v-model="ruleForm.username" autocomplete="off"></el-input>
+            <el-form-item prop="username">
+                <el-input prefix-icon="User" v-model="ruleForm.username" autocomplete="off"></el-input>
             </el-form-item>
-            <el-form-item label="密码" prop="password">
-                <el-input v-model="ruleForm.password" type="password" autocomplete="off"></el-input>
+            <el-form-item prop="password">
+                <el-input prefix-icon="Lock" v-model="ruleForm.password" type="password" autocomplete="off"></el-input>
+            </el-form-item>
+            <el-form-item>
+                <el-button type="primary" @click="submit('ruleForm')">登录</el-button>
             </el-form-item>
         </el-form>
     </div>
@@ -27,7 +30,20 @@ export default {
                 password:''
             },
             rules:{
-                
+                username: [
+                    {
+                        required: true,
+                        message: '请输入账号!',
+                        trigger: 'blur',
+                    },
+                ],
+                password: [
+                    {
+                        required: true,
+                        message: '请输入密码!',
+                        trigger: 'blur',
+                    },
+                ],
             }
         };
     },
@@ -35,20 +51,26 @@ export default {
 
     },
     methods: {
-        login(){
+        submit(formName){
             let _self = this;
-            _self.$http({
-                method:'post',
-                url:'/user',
-                data:{
-                    username: 'admin',
-                    password: '123456'
-                }
-            }).then(res => {
-                console.log(res);
-                let code = res.data.meta.status;
-                if(code == '200'){
-                    _self.$router.push('/home')
+            _self.$refs[formName].validate((valid) => {
+                if (valid) {
+                    _self.$http({
+                        method:'post',
+                        url:'/user',
+                        data:{
+                            username: _self.ruleForm.username,
+                            password: _self.ruleForm.password
+                        }
+                    }).then(res => {
+                        let code = res.data.meta.status;
+                        if(code == '200'){
+                            _self.$router.push('/home')
+                        }
+                    })
+                } else {
+                    console.log('error submit!!')
+                    return false
                 }
             })
         }
