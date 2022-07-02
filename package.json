@@ -33,7 +33,7 @@
     "babel-eslint": "^10.1.0",
     "eslint": "^6.7.2",
     "eslint-plugin-vue": "^7.0.0",
-    "less": "^3.0.4",
+    "less": "^3.13.1",
     "less-loader": "^5.0.0",
     "unplugin-auto-import": "^0.5.4",
     "unplugin-vue-components": "^0.17.11"
