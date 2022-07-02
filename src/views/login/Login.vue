@@ -77,3 +77,17 @@ export default {
     },
 };
 </script>
+<style lang="less" scoped>
+    .login{
+        position: relative;
+        width: 100%;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        .demo-ruleForm{
+            width: 600px;
+        }
+    }
+    
+</style>
